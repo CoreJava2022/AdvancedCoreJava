@@ -1,0 +1,90 @@
+CREATE TABLE "HR"."CANDIDATE_PROFILE"(
+"CANDIDATE_ID" NUMBER(12,0),
+"FNAME" VARCHAR2(20),
+"LNAME" VARCHAR2(20),
+"CANDIDATE_PICTURE" BLOB,
+"CANDIDATE_RESUME" CLOB,
+"CANDIDATE_DOB" DATE,
+"CADIDATE_PROFILE" DATE,
+CONSTRAINT "CANDIDATE_ID_PK" PRIMARY KEY ("CANDIDATE_ID")
+);
+
+
+INSERT INTO CANDIDATE_PROFILE ( CANDIDATE_ID,FNAME,LNAME,CANDIDATE_PICTURE,CANDIDATE_RESUME,CANDIDATE_DOB,CADIDATE_PROFILE)
+VALUES (100,'Manasi','Kulkarni',utl_raw.cast_to_raw('D:\program Details\PNG_Format Image\butterfly.png'),
+utl_raw.cast_to_raw('D:\programDetails\NobelAllfiles\Assignment_Part1.docx'),'26-june-87',SYSDATE);
+
+
+
+CREATE TABLE Customers (
+  id INT,
+  first_name VARCHAR(40),
+  last_name VARCHAR(40),
+  age INT,
+  country VARCHAR(10),
+  CONSTRAINT CustomersPK PRIMARY KEY (id)
+);
+
+
+CREATE TABLE Orders (
+  order_id INT,
+  item VARCHAR(40),
+  amount INT,
+  customer_id INT REFERENCES Customers(id),
+  CONSTRAINT OrdersPK PRIMARY KEY (order_id)
+);
+
+CREATE TABLE customers1 (
+    customer_id INT PRIMARY KEY,
+    customer_name VARCHAR(255),
+    customer_email VARCHAR(255),
+    customer_phone VARCHAR(20),
+    customer_address VARCHAR(255)
+)
+
+INSERT INTO customers1 VALUES (1,'John Smith', 'john.smith@example.com', '+1-555-123-4567', '123 Main St');
+
+INSERT INTO customers1 VALUES(2, 'Jane Doe', 'jane.doe@example.com', '+1-555-987-6543', '456 Oak Ave');
+INSERT INTO customers1 VALUES(3, 'Bob Johnson', 'bob.johnson@example.com', '+1-555-555-5555', '789 Elm St');
+
+Select * from  customers1;
+
+
+
+create or replace PROCEDURE get_customer_info (
+   p_customer_id IN NUMBER,
+   p_customer_name OUT VARCHAR2,
+   p_customer_email OUT VARCHAR2,
+   p_customer_phone OUT VARCHAR2,
+   p_customer_address OUT VARCHAR2
+) AS
+BEGIN
+   SELECT CUSTOMER_NAME, CUSTOMER_EMAIL, CUSTOMER_PHONE,CUSTOMER_ADDRESS
+   INTO p_customer_name, p_customer_email, p_customer_phone,p_customer_address
+   FROM customer1
+   WHERE customer_id = p_customer_id;
+END;
+
+ALTER TABLE customers1 DISABLE CONSTRAINT CustomersPK;
+
+
+CREATE OR REPLACE PROCEDURE fetch_employee_records ( p_emp_cur OUT SYS_REFCURSOR ) 
+IS 
+-- Declare a cursor to fetch employee records 
+CURSOR emp_cur IS SELECT EMPLOYEE_ID, FIRST_NAME,
+SALARY FROM EMPLOYEES;
+-- Declare variables to hold cursor data 
+emp_id EMPLOYEES.EMPLOYEE_ID%TYPE;
+emp_name EMPLOYEES.FIRST_NAME%TYPE; 
+emp_salary EMPLOYEES.SALARY%TYPE;
+BEGIN
+-- Open the cursor 
+OPEN emp_cur; 
+-- Fetch data from the cursor and process it 
+LOOP FETCH emp_cur INTO emp_id, emp_name, emp_salary;
+EXIT WHEN emp_cur%NOTFOUND; 
+-- Process the data here 
+DBMS_OUTPUT.PUT_LINE('Employee ID: ' || emp_id || ', Name: ' || emp_name || ', Employee Salary: ' || emp_salary);
+END LOOP; 
+-- Close the cursor 
+CLOSE emp_cur; END;

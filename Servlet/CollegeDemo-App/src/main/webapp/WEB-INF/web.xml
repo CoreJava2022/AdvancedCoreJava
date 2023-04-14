@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>CollegeDemo</display-name>
+    <servlet>
+  <servlet-name>CollegeName</servlet-name>
+  <servlet-class>com.example.controller.CollegeName</servlet-class>
+ </servlet>
+  <servlet-mapping>
+  <servlet-name>CollegeName</servlet-name>
+  <url-pattern>/college</url-pattern>
+  </servlet-mapping>
+   <context-param>
+  	  	<param-name>Application_Name</param-name>
+    	<param-value>TVSTechnology.com</param-value>
+    	
+  </context-param>
+    <context-param>
+    <param-name>College_Name</param-name>
+    	<param-value>Dr.D.Y.Patil COLLEGE ARTS AND COMMERCE COLLEGE AKURDI PUNE-33.</param-value>
+    </context-param>
+   <servlet>
+  <servlet-name>RegistrationForm</servlet-name>
+  <servlet-class>com.example.controller.RegistrationForm</servlet-class>
+  <init-param>
+  <param-name>personalEmail</param-name>
+  <param-value>tusharsinare1995@gmail.com</param-value>
+  </init-param>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>RegistrationForm</servlet-name>
+  <url-pattern>/myForm</url-pattern>
+  </servlet-mapping>
+  <servlet>
+        <servlet-name>SessionOne</servlet-name>
+        <servlet-class>com.example.controller.session.SessionOne</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SessionTwo</servlet-name>
+        <servlet-class>com.example.controller.session.SessionTwo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionOne</servlet-name>
+        <url-pattern>/servlet1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SessionTwo</servlet-name>
+        <url-pattern>/servlet2</url-pattern>
+    </servlet-mapping>
+    
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    
+  </welcome-file-list>
+</web-app>

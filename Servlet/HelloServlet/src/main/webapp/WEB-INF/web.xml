@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+	<display-name>HelloServlet</display-name>
+	<servlet>
+		<servlet-name>Hello</servlet-name>
+		<servlet-class>com.hello.controller.ServiceServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Hello</servlet-name>
+		<url-pattern>/NobelIt</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>FormController</servlet-name>
+		<servlet-class>com.hello.controller.FormController</servlet-class>
+		<init-param>
+			<param-name>email</param-name>
+			<param-value>tusharsinare0202@gmail.com</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FormController</servlet-name>
+		<url-pattern>/MyForm</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	
+	<servlet>
+		<servlet-name>ServletConfigExample</servlet-name>
+		<servlet-class>com.hello.controller.config.ServletConfigExample</servlet-class>
+		<init-param>
+			<param-name>email</param-name>
+			<param-value>suyogk87@gmail.com</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ServletConfigExample</servlet-name>
+		<url-pattern>/ServletConfigExample</url-pattern>
+	</servlet-mapping>
+	
+	 <servlet-mapping>
+	    <servlet-name>ServletConfigExample</servlet-name>
+    	<url-pattern>/ServletContextExample</url-pattern>
+ 	</servlet-mapping>
+	<context-param>
+  	  	<param-name>Application_Name</param-name>
+    	<param-value>HelloServlet.com</param-value>
+  </context-param>
+  <!-- Cookies Session parameter -->
+  <servlet>
+        <servlet-name>SessionOne</servlet-name>
+        <servlet-class>com.example.session.SessionOne</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SessionTwo</servlet-name>
+        <servlet-class>com.example.session.SessionTwo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionOne</servlet-name>
+        <url-pattern>/servlet1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SessionTwo</servlet-name>
+        <url-pattern>/servlet2</url-pattern>
+    </servlet-mapping>
+    
+      <!-- HTTPSession parameter -->
+    <servlet>
+        <servlet-name>HttpSessionOne</servlet-name>
+        <servlet-class>com.example.session.HttpSessionOne</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HttpSessionTwo</servlet-name>
+        <servlet-class>com.example.session.HttpSessionTwo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HttpSessionOne</servlet-name>
+        <url-pattern>/session1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HttpSessionTwo</servlet-name>
+        <url-pattern>/session2</url-pattern>
+    </servlet-mapping>
+    
+    <!-- URLRewritig parameter -->
+   <servlet>
+        <servlet-name>URLRewrtingOne</servlet-name>
+        <servlet-class>com.example.session.URLRewrtingOne</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>URLRewrtingTwo</servlet-name>
+        <servlet-class>com.example.session.URLRewrtingTwo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>URLRewrtingOne</servlet-name>
+        <url-pattern>/URLRewrtingOne</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>URLRewrtingTwo</servlet-name>
+        <url-pattern>/URLRewrtingTwo</url-pattern>
+    </servlet-mapping>
+    
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
